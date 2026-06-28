@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥬</text></svg>">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+  <%- include('partials/navbar') %>
+
+  <div class="flex-grow-1 d-flex align-items-center justify-content-center py-5">
+    <div class="card border-0 shadow-sm w-100" style="max-width:460px;">
+      <div class="card-body p-5">
+        <h3 class="fw-bold text-center mb-1">Create an Account</h3>
+        <p class="text-center text-muted mb-4">Start shopping</p>
+
+        <% if (locals.error) { %>
+          <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+
+        <form action="/signup" method="POST" id="signupForm" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label fw-semibold">Full Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label fw-semibold">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label fw-semibold">Password</label>
+            <div class="input-group">
+              <input type="password" id="password" name="password" class="form-control" placeholder="Min. 6 characters" required minlength="6">
+              <button class="btn btn-outline-secondary" type="button" id="togglePassword">👁</button>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="confirmPassword" class="form-label fw-semibold">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Repeat your password" required>
+            <div id="passwordMismatch" class="text-danger small mt-1 d-none">Passwords do not match.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Create Account</button>
+        </form>
+
+        <hr class="my-4">
+        <p class="text-center text-muted mb-0">
+          Already have an account? <a href="/login" class="fw-semibold text-primary">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/validate.js"></script>
+  <script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+      const pw = document.getElementById('password');
+      pw.type = pw.type === 'password' ? 'text' : 'password';
+    });
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      const pw = document.getElementById('password').value;
+      const cpw = document.getElementById('confirmPassword').value;
+      const msg = document.getElementById('passwordMismatch');
+      if (pw !== cpw) {
+        e.preventDefault();
+        msg.classList.remove('d-none');
+      } else {
+        msg.classList.add('d-none');
+      }
+    });
+  </script>
+</body>
+</html>

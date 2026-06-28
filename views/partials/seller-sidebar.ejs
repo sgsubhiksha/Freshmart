@@ -1,0 +1,13 @@
+<div class="admin-sidebar" style="width:220px;min-width:220px">
+  <div class="brand">🏪 <span><%= user ? user.shopName || 'My Shop' : 'Seller' %></span></div>
+  <nav class="nav flex-column mt-3">
+    <a class="nav-link" href="/seller/dashboard">Dashboard</a>
+    <a class="nav-link" href="/seller/products">My Products</a>
+    <a class="nav-link" href="/seller/orders">Orders</a>
+    <a class="nav-link" href="/seller/earnings">Earnings</a>
+    <a class="nav-link" href="/seller/reviews">Reviews</a>
+    <a class="nav-link" href="/seller/profile">Profile</a>
+    <hr style="border-color:#2a2a45;margin:0.5rem 1rem">
+    <a class="nav-link text-danger" href="/logout">Logout</a>
+  </nav>
+</div>

@@ -1,0 +1,89 @@
+// --- Main Component ---
+export default function AdminDashboard({
+  user = mockUser,
+  stats = mockStats,
+  recentOrders = mockRecentOrders,
+}) {
+  return (
+    <div className="bg-light min-vh-100">
+      {/* Navbar placeholder */}
+      <nav className="navbar navbar-dark bg-dark px-4">
+        <span className="navbar-brand fw-bold">MyShop Admin</span>
+        <span className="text-white small">{user.name}</span>
+      </nav>
+
+      <div className="container py-5">
+        {/* Header */}
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <div>
+            <h2 className="fw-bold mb-0">Admin Dashboard</h2>
+            <p className="text-muted mb-0">Welcome, {user.name}</p>
+          </div>
+          <span className="badge bg-warning text-dark fs-6">Admin Panel</span>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="row g-4 mb-5">
+          <StatCard icon="📦" value={stats.totalProducts} label="Total Products" link="/admin/products" colorClass="text-primary" />
+          <StatCard icon="🛒" value={stats.totalOrders} label="Total Orders" link="/admin/orders" colorClass="text-success" />
+          <StatCard icon="👥" value={stats.totalUsers} label="Registered Users" colorClass="text-info" />
+          <StatCard
+            icon="💰"
+            value={`₹${stats.totalRevenue?.toFixed(2) ?? "0.00"}`}
+            label="Total Revenue"
+            colorClass="text-warning"
+          />
+        </div>
+
+        {/* Quick Actions + Recent Orders */}
+        <div className="row g-3">
+          {/* Quick Actions */}
+          <div className="col-md-6">
+            <div className="card border-0 shadow-sm h-100">
+              <div className="card-body">
+                <h5 className="fw-bold mb-3">Quick Actions</h5>
+                <div className="d-flex flex-column gap-2">
+                  <a href="/admin/products" className="btn btn-outline-primary">📦 Manage Products</a>
+                  <a href="/admin/orders" className="btn btn-outline-success">🛒 Manage Orders</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Recent Orders */}
+          <div className="col-md-6">
+            <div className="card border-0 shadow-sm h-100">
+              <div className="card-body">
+                <h5 className="fw-bold mb-3">Recent Orders</h5>
+                {recentOrders && recentOrders.length > 0 ? (
+                  <ul className="list-group list-group-flush">
+                    {recentOrders.slice(0, 5).map((order) => (
+                      <li
+                        key={order._id}
+                        className="list-group-item px-0 d-flex justify-content-between align-items-center"
+                      >
+                        <span className="small">
+                          #{order._id.toString().slice(-6).toUpperCase()} — {order.user?.name ?? "Unknown"}
+                        </span>
+                        <span className={`badge ${statusBadgeClass(order.status)}`}>
+                          {order.status}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-muted">No recent orders.</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer placeholder */}
+      <footer className="text-center text-muted py-4 small">
+        &copy; {new Date().getFullYear()} MyShop Admin. All rights reserved.
+      </footer>
+    </div>
+  );
+}

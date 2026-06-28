@@ -1,0 +1,370 @@
+/* ── FreshCart Custom CSS — Red & Beige Edition ────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --fc-red:      #C0392B;
+  --fc-red-lt:   #E74C3C;
+  --fc-red-dk:   #922B21;
+  --fc-beige:    #F5ECD7;
+  --fc-cream:    #FDF8EF;
+  --fc-gold:     #D4A055;
+  --fc-dark:     #2C2416;
+  --fc-gray:     #8a7a60;
+  --fc-border:   #E0D0B0;
+  --fc-card-bg:  #ffffff;
+  --fc-shadow:   0 4px 20px rgba(44,36,22,0.08);
+  --fc-radius:   14px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--fc-cream);
+  color: var(--fc-dark);
+}
+
+h1, h2, h3, .display-4 {
+  font-family: 'Fraunces', serif;
+}
+
+/* ── Navbar ───────────────────────────────────────────────────────── */
+.fc-navbar {
+  background: #fff;
+  border-bottom: 2px solid var(--fc-border);
+  box-shadow: 0 2px 12px rgba(44,36,22,0.06);
+}
+.fc-navbar .navbar-brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  color: var(--fc-red);
+  font-weight: 700;
+}
+.fc-navbar .navbar-brand span { color: var(--fc-gold); }
+.fc-navbar .nav-link {
+  font-weight: 500;
+  color: var(--fc-dark) !important;
+  padding: 0.4rem 0.9rem !important;
+  border-radius: 8px;
+  transition: background .2s;
+}
+.fc-navbar .nav-link:hover { background: var(--fc-beige); }
+.fc-navbar .nav-link.active { color: var(--fc-red) !important; }
+.cart-badge {
+  background: var(--fc-red);
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 20px;
+  vertical-align: top;
+}
+
+/* ── Hero Banner ──────────────────────────────────────────────────── */
+.fc-hero {
+  background: linear-gradient(135deg, var(--fc-red) 0%, var(--fc-red-dk) 55%, var(--fc-red-lt) 100%);
+  color: #fff;
+  padding: 3.5rem 0 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.fc-hero::after {
+  content: '🍅🌶️🥕🍇🧅🫐';
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  letter-spacing: 0.3rem;
+  opacity: 0.18;
+}
+.fc-hero h1 { font-size: 2.5rem; font-weight: 700; }
+.fc-hero .lead { opacity: 0.9; }
+
+/* ── Search Bar ───────────────────────────────────────────────────── */
+.fc-search-wrap {
+  background: rgba(255,255,255,0.15);
+  border-radius: 50px;
+  padding: 4px;
+  max-width: 520px;
+}
+.fc-search-wrap input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+.fc-search-wrap input::placeholder { color: rgba(255,255,255,0.65); }
+.fc-search-wrap input:focus { outline: none; box-shadow: none; }
+.fc-search-wrap button {
+  background: #fff;
+  color: var(--fc-red);
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1.3rem;
+  font-weight: 600;
+}
+
+/* ── Category Pills ───────────────────────────────────────────────── */
+.fc-category-pill {
+  background: #fff;
+  border: 2px solid var(--fc-border);
+  color: var(--fc-dark);
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.fc-category-pill:hover,
+.fc-category-pill.active {
+  background: var(--fc-red);
+  border-color: var(--fc-red);
+  color: #fff;
+}
+
+/* ── Product Card ─────────────────────────────────────────────────── */
+.fc-card {
+  background: var(--fc-card-bg);
+  border-radius: var(--fc-radius);
+  box-shadow: var(--fc-shadow);
+  border: 1px solid var(--fc-border);
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s;
+}
+.fc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(44,36,22,0.13);
+}
+.fc-card .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  background: var(--fc-beige);
+}
+.fc-card .card-body { padding: 1rem 1.2rem; }
+.fc-card .card-title { font-family: 'Fraunces', serif; font-size: 1rem; margin-bottom: 0.3rem; }
+.fc-card .fc-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--fc-red);
+}
+.fc-card .fc-stock-low { color: var(--fc-red-lt); font-size: 0.78rem; font-weight: 500; }
+.fc-card .badge-category {
+  background: var(--fc-beige);
+  color: var(--fc-gray);
+  font-size: 0.72rem;
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────── */
+.btn-fc-primary {
+  background: var(--fc-red);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  transition: background .2s;
+}
+.btn-fc-primary:hover { background: var(--fc-red-dk); color: #fff; }
+.btn-fc-accent {
+  background: var(--fc-gold);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.btn-fc-accent:hover { background: #b07830; color: #fff; }
+
+/* ── Cart ─────────────────────────────────────────────────────────── */
+.fc-cart-table th { background: var(--fc-beige); border: none; color: var(--fc-dark); }
+.fc-cart-table td { vertical-align: middle; }
+.qty-control { display: flex; align-items: center; gap: 0.5rem; }
+.qty-control button {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--fc-red);
+  background: transparent;
+  color: var(--fc-red);
+  font-weight: 700;
+  line-height: 1;
+}
+.qty-control button:hover { background: var(--fc-red); color: #fff; }
+.qty-control input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid var(--fc-border);
+  border-radius: 6px;
+}
+
+/* ── Cart Summary ─────────────────────────────────────────────────── */
+.fc-summary-card {
+  background: #fff;
+  border-radius: var(--fc-radius);
+  box-shadow: var(--fc-shadow);
+  border: 1px solid var(--fc-border);
+  padding: 1.5rem;
+  position: sticky;
+  top: 80px;
+}
+
+/* ── Forms ────────────────────────────────────────────────────────── */
+.fc-form-card {
+  background: #fff;
+  border-radius: var(--fc-radius);
+  box-shadow: var(--fc-shadow);
+  border: 1px solid var(--fc-border);
+  padding: 2.5rem;
+  max-width: 480px;
+  margin: 3rem auto;
+}
+.fc-form-card h2 { font-family: 'Fraunces', serif; color: var(--fc-red); }
+.fc-form-card .form-control {
+  border-radius: 10px;
+  border: 2px solid var(--fc-border);
+  padding: 0.6rem 1rem;
+}
+.fc-form-card .form-control:focus {
+  border-color: var(--fc-red-lt);
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
+}
+.form-brand-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 2rem;
+  color: var(--fc-red);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.form-brand-logo span { color: var(--fc-gold); }
+
+/* ── Admin ────────────────────────────────────────────────────────── */
+.admin-sidebar {
+  background: var(--fc-dark);
+  min-height: 100vh;
+  padding-top: 1.5rem;
+}
+.admin-sidebar .brand {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  color: var(--fc-beige);
+  padding: 0 1.2rem 1rem;
+  border-bottom: 1px solid #3a3020;
+}
+.admin-sidebar .brand span { color: var(--fc-gold); }
+.admin-sidebar .nav-link {
+  color: rgba(255,255,255,0.65) !important;
+  padding: 0.65rem 1.2rem;
+  border-radius: 8px;
+  margin: 2px 8px;
+  font-weight: 500;
+  transition: all .2s;
+}
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+  background: rgba(255,255,255,0.08);
+  color: #fff !important;
+}
+.admin-sidebar .nav-link i { width: 22px; }
+.admin-content { padding: 2rem; background: var(--fc-cream); min-height: 100vh; }
+.stat-card {
+  background: #fff;
+  border-radius: var(--fc-radius);
+  padding: 1.5rem;
+  box-shadow: var(--fc-shadow);
+  border: 1px solid var(--fc-border);
+  border-left: 4px solid var(--fc-red);
+}
+.stat-card.gold   { border-left-color: var(--fc-gold); }
+.stat-card.lt-red { border-left-color: var(--fc-red-lt); }
+.stat-card.dark   { border-left-color: var(--fc-dark); }
+.stat-card .stat-value { font-size: 2rem; font-weight: 700; font-family: 'Fraunces', serif; color: var(--fc-dark); }
+.stat-card .stat-label { font-size: 0.82rem; color: var(--fc-gray); text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* ── Toast Notifications ──────────────────────────────────────────── */
+#fc-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  min-width: 250px;
+}
+.fc-toast-item {
+  background: var(--fc-dark);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 16px rgba(44,36,22,0.25);
+  animation: slideIn .3s ease;
+}
+.fc-toast-item.success { border-left: 4px solid var(--fc-gold); }
+.fc-toast-item.error   { border-left: 4px solid var(--fc-red-lt); }
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── Order Status Badges ──────────────────────────────────────────── */
+.fc-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--fc-gray);
+}
+.fc-empty .fc-empty-icon { font-size: 4rem; }
+.status-badge { border-radius: 20px; padding: 3px 12px; font-size: 0.78rem; font-weight: 600; }
+.status-Pending        { background: #fdf0e8; color: #7a4015; }
+.status-Confirmed      { background: #fde8e8; color: #7a1515; }
+.status-OutforDelivery { background: #e8f0fd; color: #15357a; }
+.status-Delivered      { background: #e8fdf0; color: #155a30; }
+.status-Cancelled      { background: var(--fc-beige); color: #7a5a25; }
+
+/* ── Product Detail ───────────────────────────────────────────────── */
+.product-detail-img {
+  border-radius: var(--fc-radius);
+  max-height: 400px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────── */
+footer {
+  background: var(--fc-dark);
+  color: rgba(255,255,255,0.55);
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  margin-top: 3rem;
+}
+footer .brand-name { font-family: 'Fraunces', serif; color: var(--fc-beige); }
+footer span { color: var(--fc-gold); }
+
+/* ── Floating Cart Button ─────────────────────────────────────────── */
+#floating-cart {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--fc-red);
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(192,57,43,0.35);
+  z-index: 999;
+  transition: transform .2s, background .2s;
+}
+#floating-cart:hover {
+  background: var(--fc-gold);
+  color: #fff;
+  transform: scale(1.05);
+}
+#floating-cart #floating-count {
+  background: #fff;
+  color: var(--fc-red);
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.85rem;
+  margin-left: 4px;
+}
